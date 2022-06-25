@@ -6,7 +6,7 @@ import (
 	"image/color"
 	"math"
 
-	"github.com/cettoana/go-waveform"
+	"github.com/joecarver/go-waveform"
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"

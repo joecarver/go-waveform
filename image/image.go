@@ -51,10 +51,7 @@ func OutputWaveformImage(data interface{}, option *Option) error {
 func outputOriginalWavefromImage(sample waveform.Sample, bound *waveform.Bound, option *Option, postfix string) error {
 	var points plotter.XYs
 
-	p, err := plot.New()
-	if err != nil {
-		return err
-	}
+	p := plot.New()
 
 	if option.Fast {
 		m := int(math.Ceil(float64(len(sample)) / 100000))
@@ -84,7 +81,7 @@ func outputOriginalWavefromImage(sample waveform.Sample, bound *waveform.Bound, 
 	p.X.Max = float64(len(sample))
 	p.Y.Min = bound.Lower
 	p.Y.Max = bound.Upper
-	p.BackgroundColor = color.Black
+	p.BackgroundColor = getBackgroundColor(option.Theme)
 
 	fileName := fmt.Sprintf("%s%s.%s", option.FileName, postfix, option.FileType)
 
@@ -92,10 +89,7 @@ func outputOriginalWavefromImage(sample waveform.Sample, bound *waveform.Bound, 
 }
 
 func outputWaveformImage(sample waveform.Sample, bound *waveform.Bound, option *Option, postfix string) error {
-	p, err := plot.New()
-	if err != nil {
-		return err
-	}
+	p := plot.New()
 
 	floor := (bound.Upper + bound.Lower) / 2
 
@@ -193,6 +187,8 @@ func getXYs(x int, s []float64, floor float64) *plotter.XYs {
 func getBackgroundColor(theme string) color.Color {
 	if theme == "dark" {
 		return color.Black
+	} else if theme == "transparent" {
+		return color.Transparent
 	}
 
 	return color.White

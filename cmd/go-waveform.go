@@ -4,8 +4,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cettoana/go-waveform"
-	"github.com/cettoana/go-waveform/image"
+	"github.com/joecarver/go-waveform"
+	"github.com/joecarver/go-waveform/image"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"

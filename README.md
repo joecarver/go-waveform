@@ -28,7 +28,7 @@ open example/violin-R.png
 Import as package,
 
 ```go
-import "github.com/cettoana/go-waveform"
+import "github.com/joecarver/go-waveform"
 ```
 
 and decode wav audio file

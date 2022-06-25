@@ -15,13 +15,14 @@ import (
 
 // Option image option
 type Option struct {
-	Fast       bool
-	FileName   string
-	FileType   string
-	Resolution int
-	Style      string
-	Width      int
-	Theme      string
+	Fast            bool
+	FileName        string
+	FileType        string
+	Resolution      int
+	Style           string
+	Width           int
+	WaveformColor   color.Color
+	BackgroundColor color.Color
 }
 
 // OutputWaveformImage output waveform image
@@ -81,7 +82,7 @@ func outputOriginalWavefromImage(sample waveform.Sample, bound *waveform.Bound, 
 	p.X.Max = float64(len(sample))
 	p.Y.Min = bound.Lower
 	p.Y.Max = bound.Upper
-	p.BackgroundColor = getBackgroundColor(option.Theme)
+	p.BackgroundColor = option.BackgroundColor
 
 	fileName := fmt.Sprintf("%s%s.%s", option.FileName, postfix, option.FileType)
 
@@ -155,7 +156,7 @@ func outputWaveformImage(sample waveform.Sample, bound *waveform.Bound, option *
 	p.X.Max = float64(len(sample))
 	p.Y.Min = bound.Lower
 	p.Y.Max = bound.Upper
-	p.BackgroundColor = getBackgroundColor(option.Theme)
+	p.BackgroundColor = option.BackgroundColor
 
 	fileName := fmt.Sprintf("%s%s.%s", option.FileName, postfix, option.FileType)
 

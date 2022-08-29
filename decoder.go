@@ -36,9 +36,9 @@ func DecodeWav(bytes []byte) *Wav {
 		dataSize = subchunk3Size
 	}
 
-	data := bytes[dataStart : dataStart+dataSize]
+	data := bytes[dataStart:]
 
-	return &Wav{
+	wav := &Wav{
 		WaveFormat:    waveFormat,
 		NumChannels:   numChannels,
 		SampleRate:    sampleRate,
@@ -46,6 +46,8 @@ func DecodeWav(bytes []byte) *Wav {
 		DataChuckSize: dataSize,
 		Data:          data,
 	}
+
+	return wav
 }
 
 // 0 to 255
